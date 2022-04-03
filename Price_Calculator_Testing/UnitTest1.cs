@@ -14,13 +14,14 @@ namespace Price_Calculator_Testing
             var expected = 20.25;
             Assert.Equal(expected, actual);
         }
-        [Fact]
-        public void PriceAfterTax_InputProduct_ReturnDoublePrice()
+        [Theory]
+        [InlineData(20, 24.30)]
+        [InlineData(21, 24.50)]
+        public void PriceAfterTax_InputProduct_ReturnDoublePrice(int taxRate , double expected)
         {
             PriceCalculator pc = new PriceCalculator();
             var prod = GenerateProduct("The Little Prince", 12345, 20.25);
-            double actual = pc.PriceAfterTax(prod, 20); 
-            var expected = 24.30;
+            double actual = pc.PriceAfterTax(prod, taxRate); 
             Assert.Equal(expected, actual);
         }
 

@@ -18,7 +18,7 @@ namespace KATA
 
         public double PriceAfterTax(Product prod, int taxRate)
         {
-            double priceAfterTax =Math.Round( prod.price * ( 100 + taxRate) / 100 , 2 , MidpointRounding.AwayFromZero);
+            double priceAfterTax = Math.Round(prod.price * (100 + taxRate) / 100, 2, MidpointRounding.AwayFromZero);
             return priceAfterTax;
         }
     }

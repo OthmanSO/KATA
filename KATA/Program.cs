@@ -3,9 +3,9 @@ namespace Calculator
 {
     partial class PriceCalculator
     {
-        public static void main(string[] varg)
+        public static void Main()
         {
-
+            PriceCalculator priceCalculator = new PriceCalculator();
         }
     }
 }

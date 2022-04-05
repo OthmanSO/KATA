@@ -8,13 +8,7 @@ namespace KATA
 {
     public class PriceCalculator
     {
-        public static void Main()
-        {
-            PriceCalculator priceCalculator = new PriceCalculator();
-        }
-
         public double PriceBeforeTax(Product p) => p.price;
-
 
         public double PriceAfterTax(Product prod, int taxRate)
         {

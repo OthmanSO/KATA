@@ -4,11 +4,12 @@ using FluentAssertions;
 
 namespace Price_Calculator_Testing
 {
+    public class GenericUpcCalculator { }
     public class UnitTest1
     {
         [Theory]
         [InlineData("The Little Prince", 12345, 20.25)]
-        public void PriceBeforTax_InputProduct_ReturnDoublePrice(string name, double UPC, double price)
+        public void PriceBeforTax_InputProduct_ReturnDoublePrice(string name, int UPC, double price)
         {
             PriceCalculator pc = new PriceCalculator();
             var prod = GenerateProduct(name, UPC, price);
@@ -18,9 +19,9 @@ namespace Price_Calculator_Testing
         }
 
         [Theory]
-        [InlineData(20, 24.30)]
+        [InlineData(20, 24.30, "The Little Prince", 12345, 20.25)]
         [InlineData(21, 24.50, "The Little Prince", 12345, 20.25)]
-        public void PriceAfterTax_InputProduct_ReturnDoublePrice(int taxRate, double expected, string name, double UPC, double price)
+        public void PriceAfterTax_InputProduct_ReturnDoublePrice(int taxRate, double expected, string name, int UPC, double price)
         {
             PriceCalculator pc = new PriceCalculator();
             var prod = GenerateProduct(name, UPC, price);

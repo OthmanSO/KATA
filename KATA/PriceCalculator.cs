@@ -15,5 +15,11 @@ namespace KATA
             double priceAfterTax = Math.Round(prod.price * (100 + taxRate) / 100, 2, MidpointRounding.AwayFromZero);
             return priceAfterTax;
         }
+
+        public double PriceAfterDiscount(Product prod, double discountRate)
+        {
+            double priceAfterDiscount = Math.Round(prod.price * (100 - discountRate) / 100, 2, MidpointRounding.AwayFromZero);
+            return priceAfterDiscount;
+        }
     }
 }

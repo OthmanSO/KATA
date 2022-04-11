@@ -4,10 +4,8 @@
     {
         public double PriceBeforeTax(Product p) => p.price;
 
-        public double PriceAfterTax(Product prod, int taxRate)
-        {
-            return PriceBeforeTax(prod) + prod.TaxValue(taxRate);
-        }
+        public double PriceAfterTax(Product prod, int taxRate) => PriceBeforeTax(prod) + prod.TaxValue(taxRate);
+
 
         public double PriceAfterDiscount(Product prod, double discountRate) => prod.price - prod.DiscountValue(discountRate);
 

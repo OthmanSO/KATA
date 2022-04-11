@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KATA
+﻿namespace KATA
 {
     public class Product
     {
@@ -19,5 +13,9 @@ namespace KATA
             this.UPC = UPC;
             this.price = price;
         }
+
+        internal double TaxValue(int taxRate) => Math.Round(this.price * taxRate / 100, 2, MidpointRounding.AwayFromZero);
+
+        internal double DiscountValue(double discountRate) => Math.Round(this.price * discountRate / 100, 2, MidpointRounding.AwayFromZero);
     }
 }

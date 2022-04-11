@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KATA
+﻿namespace KATA
 {
     public class PriceCalculator
     {
@@ -12,14 +6,11 @@ namespace KATA
 
         public double PriceAfterTax(Product prod, int taxRate)
         {
-            double priceAfterTax = Math.Round(prod.price * (100 + taxRate) / 100, 2, MidpointRounding.AwayFromZero);
-            return priceAfterTax;
+            return PriceBeforeTax(prod) + prod.TaxValue(taxRate);
         }
 
-        public double PriceAfterDiscount(Product prod, double discountRate)
-        {
-            double priceAfterDiscount = Math.Round(prod.price * (100 - discountRate) / 100, 2, MidpointRounding.AwayFromZero);
-            return priceAfterDiscount;
-        }
+        public double PriceAfterDiscount(Product prod, double discountRate) => prod.price - prod.DiscountValue(discountRate);
+
+        public object FinalProductPrice(Product product, int discountRate, int taxRate) => PriceAfterTax(product, taxRate) - product.DiscountValue(discountRate);
     }
 }

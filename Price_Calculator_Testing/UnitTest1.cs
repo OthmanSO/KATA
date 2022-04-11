@@ -1,6 +1,6 @@
+using FluentAssertions;
 using KATA;
 using Xunit;
-using FluentAssertions;
 
 namespace Price_Calculator_Testing
 {
@@ -35,8 +35,18 @@ namespace Price_Calculator_Testing
         {
             var pc = new PriceCalculator();
             var product = GenerateProduct(name, UPC, price);
-            var actual = pc.PriceAfterDiscount(product,discountRate);
-            actual.Should().Be(expected);  
+            var actual = pc.PriceAfterDiscount(product, discountRate);
+            actual.Should().Be(expected);
+        }
+
+        [Theory]
+        [InlineData(20, 15, 21.26, "The Little Prince", 12345, 20.25)]
+        public void PriceAfterTaxAndDiscount_InputProduct_outputDoublePriceAfterTaxAndDiscount(int taxRate, int discountRate, double expected, string name, int UPC, double price)
+        {
+            var pc = new PriceCalculator();
+            var product = GenerateProduct(name, UPC, price);
+            var actual = pc.FinalProductPrice(product, discountRate, taxRate);
+            actual.Should().Be(expected);
         }
 
         private Product GenerateProduct(string Name, int UPC, double price)
